@@ -20,7 +20,7 @@ class OrdersController extends Controller
 
 		$order->save();
 
-        $pedido = new Pedido();
+		$pedido = new Pedido();
 
         $allorders = Order::get();
 
@@ -58,17 +58,32 @@ class OrdersController extends Controller
 
     }
 
+	public function addlocation(Request $request)
+	{
+		$order = Order::latest()->first();
+
+		$jloc = $request->all();
+
+		$order->location = $jloc;
+
+		$order->save();
+
+		return response()->json($request, 201);
+
+
+	}
+
     public function showorders(){
 
         $pedidos = Pedido::get();
 
-        $loc = Order::find('location');
-        $jloc = j
+		$jloc = Order::first()->get('location');
 
 
 
 
-        return view('orders', compact('pedidos'));
+
+
+        return view('orders', compact('pedidos', 'jloc'));
     }
 }
-
