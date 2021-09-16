@@ -12,6 +12,7 @@
             <th scope="col">#</th>
             <th scope="col">Productos</th>
             <th scope="col">Precio Total</th>
+			<th scope="col">Geolocalización</th>
         </tr>
         </thead>
         <tbody>
@@ -26,10 +27,8 @@
 
                 </td>
                 <td> {{ $p->price }} </td>
+				<td> {{ $jloc }} </td>
             </tr>
     </table>
     @endforeach
 </div>
-
-
-</x-app-layout>
